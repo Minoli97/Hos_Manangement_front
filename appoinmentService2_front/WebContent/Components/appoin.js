@@ -1,10 +1,10 @@
 $(document).ready(function()
 {
-if ($("#alertSuccess").text().trim() == "")
- {
- $("#alertSuccess").hide();
- }
- $("#alertError").hide();
+	if($("#alertSuccess").text().trim()=="")
+	{
+	$("#alertSuccess").hide();
+	}
+    $("#alertError").hide();
 });
 
 $(document).on("click", "#btnSave", function(event)
@@ -30,9 +30,48 @@ $(document).on("click", "#btnSave", function(event)
 			 return;
 			 } 
 			// If valid------------------------
-			 $("#appointForm").submit();
+			var type = ($("#hidAppoinIDSave").val() == "") ? "POST" : "PUT"; 
+			$.ajax( {  
+				url : "AppoinmentAPI",  
+				type : type,  
+				data : $("#appointForm").serialize(),  
+				dataType : "text",  
+				complete : function(response, status)  
+				{   
+					onAppoinSaveComplete(response.responseText, status);  
+				} 
+			}); 
 
 		});
+
+function onItemSaveComplete(response, status) {  
+	 if (status == "success")  {  
+		 var resultSet = JSON.parse(response); 
+	 
+	  if (resultSet.status.trim() == "success")   { 
+		  $("#alertSuccess").text("Successfully saved.");   
+		  $("#alertSuccess").show(); 
+		  $("#divItemsGrid").html(resultSet.data);  
+	   } else if (resultSet.status.trim() == "error")   {   
+		   $("#alertError").text(resultSet.data);   
+		   $("#alertError").show();  
+	   } 
+	 
+	 } else if (status == "error")  {  
+		 $("#alertError").text("Error while saving.");  
+		 $("#alertError").show();  
+		 } else  {  
+			 $("#alertError").text("Unknown error while saving..");  
+			 $("#alertError").show(); 
+		 } 
+	 
+	 
+	 $("#hidAppoinIDSave").val("");  
+	 $("#appointForm")[0].reset(); 
+	
+	
+	} 
+
 //UPDATE==========================================
 $(document).on("click", ".btnUpdate", function(event)
 {
@@ -42,6 +81,44 @@ $(document).on("click", ".btnUpdate", function(event)
  $("#hospitalName").val($(this).closest("tr").find('td:eq(2)').text());
  $("#description").val($(this).closest("tr").find('td:eq(3)').text());
 });
+
+$(document).on("click", ".btnRemove", function(event)
+{  
+	$.ajax(  {   
+		url : "AppoinmentAPI",   
+		type : "DELETE",  
+		data : "appinmentId=" + $(this).data("appinmentId"),   
+		dataType : "text",   
+		complete : function(response, status)  
+		{    
+			onAppoinDeleteComplete(response.responseText, status);  
+			} 
+	}); 
+	}); 
+
+function onItemDeleteComplete(response, status) { 
+	if (status == "success")  {   
+		var resultSet = JSON.parse(response); 
+
+		if (resultSet.status.trim() == "success")  
+		{    
+			$("#alertSuccess").text("Successfully deleted.");   
+			$("#alertSuccess").show(); 
+
+			$("#divItemsGrid").html(resultSet.data); 
+		} else if (resultSet.status.trim() == "error")   {   
+			$("#alertError").text(resultSet.data);    
+			$("#alertError").show();  
+		} 
+
+	} else if (status == "error")  {  
+		$("#alertError").text("Error while deleting.");
+		$("#alertError").show();  
+		} else  {  
+			$("#alertError").text("Unknown error while deleting..");  
+			$("#alertError").show();  
+			} 
+	} 
 
 //CLIENT-MODEL================================================================
 function validateAppoinForm()

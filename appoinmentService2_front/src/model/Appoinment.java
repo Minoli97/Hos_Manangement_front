@@ -47,12 +47,18 @@ public class Appoinment {
   
    // execute the statement    
    preparedStmt.execute();    
-   con.close();  
-   output = "Inserted successfully";   
+   con.close(); 
+   
+   String newAppoin = readAppoinment();    output = "{\"status\":\"success\", \"data\": \"" +        newAppoin + "\"}";   
+   //output = "Inserted successfully";   
    }   catch (Exception e)   
-  {    output = "Error while inserting the appoinment.";   
-  System.err.println(e.getMessage());   }  
-  return output;  }
+  {    
+	   output = "{\"status\":\"error\", \"data\":   \"Error while inserting the item.\"}";  
+	   System.err.println(e.getMessage()); 
+  
+  }  
+  return output;  
+  }
 	
 	
 
@@ -65,7 +71,8 @@ public class Appoinment {
 	   return "Error while connecting to the database for reading."; 
 	   }  
    // Prepare the html table to be displayed   
-   output = "<table border=\"1\"><tr><th>Patient Name</th><th>Doctor Name</th><th>Hospital Name</th><th>Description</th><th>Update</th><th>Remove</th></tr>";
+   output = "<table border='1\'><tr><th>Patient Name</th><th>Doctor Name</th><th>Hospital Name</th>"
+   		+ "<th>Description</th><th>Update</th><th>Remove</th></tr>";
    
    String query = "select * from appointment";    
    Statement stmt = con.createStatement();   
@@ -81,30 +88,15 @@ public class Appoinment {
     // Add into the html table     
  
 
-	  output += "<tr><td>  <input id=\"hidAppoinIDUpdate\" name=\"hidAppoinIDUpdate\"type=\"hidden\" value=\"" + appinmentId + "\">";
-			 
-	  output += "<tr><td>" + patientName + "</td>";     
-  
-	
-	  output += "<td>" + doctorName + "</td>";     
-   	
-	
-	  output += "<td>" + hospitalName + "</td>";     
-   	
-	
-	output += "<td>" + description + "</td>";  
+	   output += "<tr><td><input id='hidAppoinIDUpdate'   name='hidAppoinIDUpdate' type='hidden'      value='" + appinmentId + "'>" + patientName + "</td>";    output += "<td>" + doctorName + "</td>";    output += "<td>" + hospitalName + "</td>";    output += "<td>" + description + "</td>";   
     // buttons     
    
 
 
 
-output += "<td><input name=\"btnUpdate\" type=\"button\" value=\"Update\" class=\"btnUpdate btn btn-secondary\"></td>"    
-    + "<td><form method=\"post\" action=\"items.jsp\">"    
-		   + "<input name=\"btnRemove\" type=\"submit\" value=\"Remove\"      "
-		   + "class=\"btn btn-danger\">"    
-		   + "<input name=\"hidAppoinIDDelete\" type=\"hidden\" value=\"" + appinmentId   
-   
-		   + "\">" + "</form></td></tr>";  
+output += "<td><input name='btnUpdate' type='button' value='Update' class='btnUpdate btn btn-secondary'></td><td><input name='btnRemove' type='submit' value='Remove' "
+		+ "class='btnRemove btn btn-danger' data-appinmentId='"  
+		    + appinmentId    + "'>" + "</td></tr>";  
    }
    con.close();  
    // Complete the html table   
@@ -134,11 +126,16 @@ output += "<td><input name=\"btnUpdate\" type=\"button\" value=\"Update\" class=
    preparedStmt.setInt(5, Integer.parseInt(appinmentId));  
    // execute the statement    
    preparedStmt.execute();    
-   con.close();  
-   output = "Updated successfully";   
+   con.close();
+   String newAppoin = readAppoinment();    output = "{\"status\":\"success\", \"data\": \"" +        
+   newAppoin + "\"}"; 
+   
+   //output = "Updated successfully";   
    }   catch (Exception e)   
-  {    output = "Error while updating the Appoinments.";    
-  System.err.println(e.getMessage());   }  
+  {    
+	   output = "{\"status\":\"error\", \"data\": \"Error while updating the Appointments.\"}";  
+	   System.err.println(e.getMessage());    
+  }  
   return output; 
   }
 	
@@ -158,98 +155,21 @@ output += "<td><input name=\"btnUpdate\" type=\"button\" value=\"Update\" class=
    preparedStmt.setInt(1, Integer.parseInt(appinmentId));  
    // execute the statement    
    preparedStmt.execute();    
-   con.close();  
-   output = "Deleted successfully";   
+   con.close(); 
+   String newAppoin = readAppoinment();    output = "{\"status\":\"success\", \"data\": \"" +     
+   newAppoin + "\"}";   
+   
+   //output = "Deleted successfully";   
    }   catch (Exception e)  
-  {    output = "Error while deleting the Appoionments.";   
-  System.err.println(e.getMessage());   }  
+  {   
+	   output = "{\"status\":\"error\", \"data\":   \"Error while deleting the Appointments.\"}";   
+	   System.err.println(e.getMessage());    
+  
+  }  
   return output;  
   }
 	
-//	public User readLogin(String username, String password) {
-//		try{
-//			Connection con = connect();
-//			
-//			if (con == null){
-//				System.out.println("bl");
-//				System.out.println("execured up before");
-//				return null;
-//			}
-//		
-////			System.out.println("execured up after");
-//
-//		// create a prepared statement
-//			String query = "select * from patientdetails where username = '"+username+"'";
-//			PreparedStatement preparedStmt = con.prepareStatement(query);
-//			Statement stmt = con.createStatement();
-//			ResultSet rs = stmt.executeQuery(query);
-//
-//
-//			while (rs.next()){
-//				System.out.println(rs.getString("patientId"));
-//				
-//				User u = new User(rs.getString("patientId"), rs.getString("name"), rs.getString("username"), "appointment");
-//	
-//				String pass = rs.getString("password");
-//	
-//				if(pass.equals(password)){
-//					System.out.println("true from db");
-//					return u;
-//				}else{
-//					System.out.println("false from db");
-//				}
-//			}
-//			
-//			con.close();
-//
-//		}catch (Exception e){
-//				System.err.println(e.getMessage());
-//		}
-//		
-//		return null;
-//			
-//	}
-	
-	//public boolean readLoginAdmin(String Admin_username, String Admin_password) {
-//		try{
-//			Connection con = connect();
-//			
-//			if (con == null){
-//				System.out.println("bl");
-//				System.out.println("execured up before");
-//				return false;
-//			}
-//		
-////			System.out.println("execured up after");
-//
-//		// create a prepared statement
-//			String query = "select Admin_password from admin where Admin_username = '"+Admin_username+"'";
-//			PreparedStatement preparedStmt = con.prepareStatement(query);
-//			Statement stmt = con.createStatement();
-//			ResultSet rs = stmt.executeQuery(query);
-//
-//
-//			while (rs.next()){
-//	
-//				String password = rs.getString("Admin_password");
-//	
-//				if(password.equals(Admin_password)){
-//					System.out.println("true from db");
-//					return true;
-//				}else{
-//					System.out.println("false from db");
-//				}
-//			}
-//			
-//			con.close();
-//
-//		}catch (Exception e){
-//				System.err.println(e.getMessage());
-//		}
-//		
-//		return false;
-//			
-//	}
+
 }
 	
 	
