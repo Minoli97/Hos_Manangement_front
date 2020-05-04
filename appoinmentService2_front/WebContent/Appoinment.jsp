@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Appointment Management</title>
 <link rel="stylesheet" href="Views/bootstrap.min.css">
 <script src="Components/jquery-3.2.1.min.js"></script>
 <script src="Components/appoin.js"></script>
@@ -13,6 +13,7 @@
 <div class ="container">
 <div class = "row">
 <div class = "col-14">
+	<h1>Appointment Form</h1>
 	<form id="appointmentForm" name="appointmentForm" method="post"
 		action="appointment.jsp">
 		<!-- Appointment ID:
