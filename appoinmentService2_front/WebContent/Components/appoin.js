@@ -44,7 +44,7 @@ $(document).on("click", "#btnSave", function(event)
 
 		});
 
-function onItemSaveComplete(response, status) {  
+function onAppoinSaveComplete(response, status) {  
 	 if (status == "success")  {  
 		 var resultSet = JSON.parse(response); 
 	 
@@ -96,7 +96,7 @@ $(document).on("click", ".btnRemove", function(event)
 	}); 
 	}); 
 
-function onItemDeleteComplete(response, status) { 
+function onAppoinDeleteComplete(response, status) { 
 	if (status == "success")  {   
 		var resultSet = JSON.parse(response); 
 
