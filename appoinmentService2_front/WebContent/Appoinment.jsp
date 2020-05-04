@@ -13,24 +13,29 @@
 <div class ="container">
 <div class = "row">
 <div class = "col-14">
-	<form id="appointForm" name="appointmentForm" method="post"
+	<form id="appointmentForm" name="appointmentForm" method="post"
 		action="appointment.jsp">
-		Appointment ID: <input id="appinmentId" name="appinmentId" type="text"
-			class="form-control form-control-sm"> <br> 
-		Patient Name:<input id="patientName" name="patientName" type="text"
-			class="form-control form-control-sm"> <br> 
-		Doctor Name:<input id="doctorName" name="doctorName" type="text"
-			class="form-control form-control-sm"> <br> 
-		Hospital Name: <input id="hospitalName" name="hospitalName" type="text"
-			class="form-control form-control-sm"> <br> 
-		Description:<input id="description" name="description" type="text"
-			class="form-control form-control-sm"> <br> 
-			<input id="btnSave" name="btnSave" type="button" value="Save"
-			class="btn btn-primary"> 
-			<input type="hidden"
-			id="hidAppoinIDSave" name="hidAppoinIDSave" value="">
+		<!-- Appointment ID:
+		 <input id="appinmentId" name="appinmentId" type="text"
+			class="form-control form-control-sm"> <br>  -->
+			
+		Patient Name:
+		<input id="patientName" name="patientName" type="text"class="form-control form-control-sm"> 
+		<br> 
+		Doctor Name:
+		<input id="doctorName" name="doctorName" type="text" class="form-control form-control-sm"> 
+		<br> 
+		Hospital Name: 
+		<input id="hospitalName" name="hospitalName" type="text" class="form-control form-control-sm"> 
+		<br> 
+		Description:
+		<input id="description" name="description" type="text"class="form-control form-control-sm">
+		<br> 
+		<input id="btnSave" name="btnSave" type="button" value="Save" class="btn btn-primary"> 
+		<input type="hidden" id="hidAppoinIDSave" name="hidAppoinIDSave" value="">
 	</form>
-	<div id="alertSuccess" class="alert alert-success">
+	
+	<div id="alertSuccess" class="alert alert-success"></div>
 		
 	<div id="alertError" class="alert alert-danger"></div>
 	

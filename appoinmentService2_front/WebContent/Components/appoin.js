@@ -21,20 +21,14 @@ $(document).on("click", "#btnSave", function(event)
 			 $("#alertError").show();
 			 return;
 			 }
-			// Form validation-------------------
-			var status = validateAppoinForm();
-			if (status != true)
-			 {
-			 $("#alertError").text(status);
-			 $("#alertError").show();
-			 return;
-			 } 
+			
+			
 			// If valid------------------------
 			var type = ($("#hidAppoinIDSave").val() == "") ? "POST" : "PUT"; 
 			$.ajax( {  
 				url : "AppoinmentAPI",  
 				type : type,  
-				data : $("#appointForm").serialize(),  
+				data : $("#appointmentForm").serialize(),  
 				dataType : "text",  
 				complete : function(response, status)  
 				{   
@@ -67,7 +61,7 @@ function onAppoinSaveComplete(response, status) {
 	 
 	 
 	 $("#hidAppoinIDSave").val("");  
-	 $("#appointForm")[0].reset(); 
+	 $("#appointmentForm")[0].reset(); 
 	
 	
 	} 
@@ -87,7 +81,7 @@ $(document).on("click", ".btnRemove", function(event)
 	$.ajax(  {   
 		url : "AppoinmentAPI",   
 		type : "DELETE",  
-		data : "appinmentId=" + $(this).data("appinmentId"),   
+		data : "appinmentId=" + $(this).data("appoid"),   
 		dataType : "text",   
 		complete : function(response, status)  
 		{    
@@ -134,7 +128,7 @@ if ($("#doctorName").val().trim() == "")
  return "Insert Doctor Name.";
  }
 // PRICE-------------------------------
-if ($("#Hospital Name").val().trim() == "")
+if ($("#hospitalName").val().trim() == "")
  {
  return "Insert Doctor Name.";
  }

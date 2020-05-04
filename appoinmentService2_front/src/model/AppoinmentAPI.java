@@ -39,7 +39,10 @@ public class AppoinmentAPI extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		String output = app.insertAppoinment(request.getParameter("patientName"), request.getParameter("doctorName"),request.getParameter("hospitalName"),request.getParameter("description")); 
+		String output = app.insertAppoinment(request.getParameter("patientName"),
+				request.getParameter("doctorName"),
+				request.getParameter("hospitalName"),
+				request.getParameter("description")); 
 		 
 		 response.getWriter().write(output); 
 		

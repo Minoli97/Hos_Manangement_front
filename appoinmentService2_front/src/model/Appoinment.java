@@ -36,7 +36,7 @@ public class Appoinment {
 	   return "Error while connecting to the database for inserting."; 
 	   }  
    // create a prepared statement    
-   String query = " insert into apoointment (appinmentId,patientName,doctorName,hospitalName,description)" + " values (?, ?, ?, ?, ?)";  
+   String query = " insert into appointment (appinmentId,patientName,doctorName,hospitalName,description)" + " values (?, ?, ?, ?, ?)";  
    PreparedStatement preparedStmt = con.prepareStatement(query);  
    // binding values    
    preparedStmt.setInt(1, 0);    
@@ -71,8 +71,13 @@ public class Appoinment {
 	   return "Error while connecting to the database for reading."; 
 	   }  
    // Prepare the html table to be displayed   
-   output = "<table border='1\'><tr><th>Patient Name</th><th>Doctor Name</th><th>Hospital Name</th>"
-   		+ "<th>Description</th><th>Update</th><th>Remove</th></tr>";
+   output = "<table border='1'>"
+   		+ "<tr><th>Patient Name</th>"
+   		+ "<th>Doctor Name</th>"
+   		+ "<th>Hospital Name</th>"
+   		+ "<th>Description</th>"
+   		+ "<th>Update</th>"
+   		+ "<th>Remove</th></tr>";
    
    String query = "select * from appointment";    
    Statement stmt = con.createStatement();   
@@ -88,15 +93,19 @@ public class Appoinment {
     // Add into the html table     
  
 
-	   output += "<tr><td><input id='hidAppoinIDUpdate'   name='hidAppoinIDUpdate' type='hidden'      value='" + appinmentId + "'>" + patientName + "</td>";    output += "<td>" + doctorName + "</td>";    output += "<td>" + hospitalName + "</td>";    output += "<td>" + description + "</td>";   
+	  output += "<tr><td><input id='hidAppoinIDUpdate' name='hidAppoinIDUpdate' type='hidden' value='" + appinmentId + "'>" + patientName + "</td>"; 
+	  output += "<td>" + doctorName + "</td>"; 
+	  output += "<td>" + hospitalName + "</td>"; 
+	  output += "<td>" + description + "</td>";   
     // buttons     
    
 
 
 
-output += "<td><input name='btnUpdate' type='button' value='Update' class='btnUpdate btn btn-secondary'></td><td><input name='btnRemove' type='submit' value='Remove' "
-		+ "class='btnRemove btn btn-danger' data-appinmentId='"  
-		    + appinmentId    + "'>" + "</td></tr>";  
+output += "<td><input name='btnUpdate' type='button' "
+		+ "value='Update' class='btnUpdate btn btn-secondary'></td>"
+		+ "<td><input name='btnRemove' type='button' "
+		+ "value='Remove' class='btnRemove btn btn-danger' data-appoid='"  + appinmentId    + "'>" + "</td></tr>";  
    }
    con.close();  
    // Complete the html table   
