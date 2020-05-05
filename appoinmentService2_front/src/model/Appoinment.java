@@ -75,7 +75,7 @@ public class Appoinment {
    		+ "<tr><th>Patient Name</th>"
    		+ "<th>Doctor Name</th>"
    		+ "<th>Hospital Name</th>"
-   		+ "<th>Description</th>"
+   		+ "<th>Phone Number</th>"
    		+ "<th>Update</th>"
    		+ "<th>Remove</th></tr>";
    

@@ -56,7 +56,7 @@ public class AppoinmentAPI extends HttpServlet {
 		Map paras = getParasMap(request); 
 		 
 		 String output = app.updateAppoinment(paras.get("hidAppoinIDSave").toString(),     
-				 paras.get("patientName").toString(),     
+				 paras.get("patientName").toString().replace("+", " "),     
 				 paras.get("doctorName").toString(),        
 				 paras.get("hospitalName").toString(),        
 				 paras.get("description").toString()); 

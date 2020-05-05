@@ -62,7 +62,7 @@
 					 <!-- description -->
 					 <div class="input-group input-group-sm mb-3">
 					 <div class="input-group-prepend">
-					 <span class="input-group-text" id="lblName">phone number: </span>
+					 <span class="input-group-text" id="lblName">Phone number: </span>
 					 </div>
 					 <input type="text" id="description" name="description">
 					 </div>
