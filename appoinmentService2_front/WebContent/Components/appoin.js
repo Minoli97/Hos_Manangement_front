@@ -117,35 +117,66 @@ function onAppoinDeleteComplete(response, status) {
 //CLIENT-MODEL================================================================
 function validateAppoinForm()
 {
-// CODE
+// PATIENT
 if ($("#patientName").val().trim() == "")
  {
  return "Insert Patientt Name.";
  }
 // NAME
-if ($("#doctorName").val().trim() == "")
- {
- return "Insert Doctor Name.";
- }
-// PRICE-------------------------------
+//if ($("#doctorName").val().trim() == "")
+// {
+// return "Insert Doctor Name.";
+// }
+
+
+
+//DOCTOR
+if ($("#doctorName").val() == "0") 
+{  
+	return "Select year.";  
+} 
+
+
+// HOSPITAL-------------------------------
 if ($("#hospitalName").val().trim() == "")
  {
  return "Insert Doctor Name.";
  }
-// is numerical value
-//var tmpPrice = $("#itemPrice").val().trim();
-//if (!$.isNumeric(tmpPrice))
-// {
-// return "Insert a numerical value for Item Price.";
-// }
 
-// convert to decimal price
- //$("#itemPrice").val(parseFloat(tmpPrice).toFixed(2));
 
-// DESCRIPTION------------------------
+//PHONE NUMBER
 if ($("#description").val().trim() == "")
  {
- return "Insert Patient Description.";
+ return "Insert phone number.";
  }
+//  PHONE NUMBER NUMERICAL VALUE
+var description = $("#description").val().trim();
+if (!$.isNumeric(description))
+	{
+		return "Insert a numerical value for phone number.";
+	}
 return true;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
