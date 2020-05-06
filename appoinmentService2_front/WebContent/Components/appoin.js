@@ -133,21 +133,21 @@ if ($("#patientName").val().trim() == "")
 //DOCTOR
 if ($("#doctorName").val() == "0") 
 {  
-	return "Select year.";  
+	return "Select a Doctor.";  
 } 
 
 
-// HOSPITAL-------------------------------
-if ($("#hospitalName").val().trim() == "")
- {
- return "Insert Doctor Name.";
- }
+//hospital
+if ($("#hospitalName").val() == "0") 
+{  
+	return "Select a Hospital.";  
+} 
 
 
 //PHONE NUMBER
 if ($("#description").val().trim() == "")
  {
- return "Insert phone number.";
+ return "Insert Phone number.";
  }
 //  PHONE NUMBER NUMERICAL VALUE
 var description = $("#description").val().trim();

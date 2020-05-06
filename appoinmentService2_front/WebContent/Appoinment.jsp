@@ -15,7 +15,7 @@
 			<div class="col-14">
 				<h1>Appointment Form</h1>
 				<form id="appointmentForm" name="appointmentForm" method="post"
-					action="appointment.jsp" style="width:250px;">
+					action="appointment.jsp" style="width:220px;">
 					<!-- Appointment ID:
 		 <input id="appinmentId" name="appinmentId" type="text"
 			class="form-control form-control-sm"> <br>  -->
@@ -41,7 +41,7 @@
 					 <option value="Ms.Sanju">Ms.Sanju</option>   
 					 <option value="Ms.Anolie">Ms.Anolie</option>   
 					 <option value="Mr.Pasan">Mr.Pasan</option>   
-					 <option value="Ms.Maleesha</">Ms.Maleesha</option>  
+					 <option value="Ms.Maleesha">Ms.Maleesha</option>  
 					 </select> 
 					 </div> 
 					 
