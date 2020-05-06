@@ -84,7 +84,7 @@
 				<div id="divItemsGrid">
 					<%
 						Appoinment app = new Appoinment();
-					out.print(app.readAppoinment());
+						out.print(app.readAppoinment());
 					%>
 				</div>
 			
