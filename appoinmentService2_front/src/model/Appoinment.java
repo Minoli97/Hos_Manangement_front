@@ -26,7 +26,7 @@ public class Appoinment {
 		e.printStackTrace();
 	}return con;
 	}
-
+//insert appoinments
 	public String insertAppoinment(String patientName, String doctorName, String hospitalName, String description)  
  {   
 		String output = "";  
